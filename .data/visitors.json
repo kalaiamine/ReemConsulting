@@ -1,0 +1,22 @@
+{
+  "visitors": [
+    {
+      "timestamp": "2026-02-01T17:04:33.796Z",
+      "path": "/",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/2.4.21 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36",
+      "id": "1769965473797"
+    },
+    {
+      "timestamp": "2026-02-01T17:04:35.634Z",
+      "path": "/",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0",
+      "id": "1769965475634"
+    },
+    {
+      "timestamp": "2026-02-01T17:44:06.784Z",
+      "path": "/",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0",
+      "id": "1769967846785"
+    }
+  ]
+}
