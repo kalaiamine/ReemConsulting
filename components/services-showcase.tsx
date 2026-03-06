@@ -1,85 +1,82 @@
 'use client'
 
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { useRef, useEffect, useState } from 'react'
+
+const services = [
+  { title: 'Conseil', image: '/strategy-consultation.jpg', href: '/iso' },
+  { title: 'Audit', image: '/audit-analysis.jpg', href: '/audit' },
+  { title: 'Formation', image: '/training-expertise.jpg', href: '/iso' },
+]
 
 export function ServicesShowcase() {
-  const services = [
-    {
-      title: 'Conseil & Stratégie',
-      description: 'Accompagnement stratégique et opérationnel pour transformer votre organisation et optimiser votre performance',
-      image: '/strategy-consultation.jpg',
-      highlights: ['Diagnostic d\'entreprise', 'Stratégie business', 'Transformation digitale']
-    },
-    {
-      title: 'Audit & Certification',
-      description: 'Audits internes et externes, certifications ISO et accompagnement vers l\'excellence managériale',
-      image: '/audit-analysis.jpg',
-      highlights: ['Audits certifiés', 'Normes ISO', 'Conformité réglementaire']
-    },
-    {
-      title: 'Formation & Expertise',
-      description: 'Programmes de formation personnalisés et transfert de savoir-faire pour développer les compétences de vos équipes',
-      image: '/training-expertise.jpg',
-      highlights: ['Formation sur mesure', 'Transfert d\'expertise', 'Coaching professionnel']
-    }
-  ]
+  const [visible, setVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => setVisible(e.isIntersecting),
+      { threshold: 0.15 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
 
   return (
-    <section id="services-showcase" className="py-20 px-6 bg-background">
+    <section
+      id="services"
+      ref={sectionRef}
+      className="py-20 px-6 bg-background overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
-            Nos Services
+          <h2
+            className={`text-4xl md:text-5xl font-serif text-foreground mb-4 transition-all duration-700 ${
+              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            Conseil Management Certification d&apos;entreprises
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Des solutions complètes de conseil adaptées aux besoins spécifiques de votre organisation
+          <p
+            className={`text-lg text-accent font-medium transition-all duration-700 delay-150 ${
+              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            Qualité Sécurité Environnement
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-12 md:gap-16 lg:gap-20 items-end">
           {services.map((service, index) => (
-            <div key={index} className="group overflow-hidden rounded-xl border border-border bg-white hover:shadow-xl transition-all duration-300">
-              {/* Image Container */}
-              <div className="relative h-64 overflow-hidden bg-secondary">
+            <Link
+              key={service.title}
+              href={service.href}
+              className="group relative flex flex-col items-center"
+              style={{
+                animation: visible ? `serviceCircleIn 0.6s ease-out ${index * 120}ms both` : 'none',
+              }}
+            >
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-border bg-muted transition-all duration-500 ease-out group-hover:scale-110 group-hover:border-accent/50 group-hover:shadow-2xl shadow-lg">
                 <Image
-                  src={service.image || "/placeholder.svg"}
+                  src={service.image}
                   alt={service.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 640px) 160px, (max-width: 768px) 192px, 224px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
               </div>
-
-              {/* Content */}
-              <div className="p-8">
-                <h3 className="text-xl font-semibold text-foreground mb-3">
+              <div className="mt-4 w-full max-w-[140%] min-w-[120px] h-11 bg-primary flex items-center justify-center shadow-md rounded-md transition-all duration-300 group-hover:bg-primary/95 group-hover:shadow-lg group-hover:scale-105 -mb-1">
+                <span className="text-white font-semibold text-sm sm:text-base whitespace-nowrap">
                   {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
-                  {service.description}
-                </p>
-
-                {/* Highlights */}
-                <div className="mb-6 space-y-2">
-                  {service.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-foreground">
-                      <div className="w-1.5 h-1.5 bg-accent rounded-full" />
-                      <span>{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <Button
-                  className="w-full bg-accent hover:bg-accent/90 text-white font-semibold"
-                >
-                  Découvrir
-                </Button>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
       </div>
     </section>
   )

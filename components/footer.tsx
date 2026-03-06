@@ -27,10 +27,11 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#about" className="text-primary-foreground/80 hover:text-primary-foreground transition">À propos</a></li>
-              <li><a href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition">Services</a></li>
-              <li><a href="#testimonials" className="text-primary-foreground/80 hover:text-primary-foreground transition">Témoignages</a></li>
-              <li><a href="#booking" className="text-primary-foreground/80 hover:text-primary-foreground transition">Réservation</a></li>
+              <li><a href="/#about" className="text-primary-foreground/80 hover:text-primary-foreground transition">À propos</a></li>
+              <li><a href="/#services" className="text-primary-foreground/80 hover:text-primary-foreground transition">Services</a></li>
+              <li><a href="/iso" className="text-primary-foreground/80 hover:text-primary-foreground transition">Certifications</a></li>
+              <li><a href="/#testimonials" className="text-primary-foreground/80 hover:text-primary-foreground transition">Témoignages</a></li>
+              <li><a href="/#booking" className="text-primary-foreground/80 hover:text-primary-foreground transition">Réservation</a></li>
             </ul>
           </div>
 
