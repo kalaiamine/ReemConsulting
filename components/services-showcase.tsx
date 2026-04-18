@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { useRef, useEffect, useState } from 'react'
 
 const services = [
-  { title: 'Conseil', image: '/strategy-consultation.jpg', href: '/iso' },
-  { title: 'Audit', image: '/audit-analysis.jpg', href: '/audit' },
-  { title: 'Formation', image: '/training-expertise.jpg', href: '/iso' },
+  { title: 'Consulting', image: '/consulting-reem.png', href: '/iso' },
+  { title: 'Audit', image: '/audit-reem.png', href: '/audit' },
+  { title: 'Formation', image: '/formation-reem.png', href: '/iso' },
+  { title: 'Événement / Conférence', image: '/iso-reem.png', href: '/contact' },
 ]
 
 export function ServicesShowcase() {
@@ -34,18 +35,14 @@ export function ServicesShowcase() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-serif text-foreground mb-4 transition-all duration-700 ${
-              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
+            className={`text-4xl md:text-5xl font-serif text-foreground mb-4 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
           >
-            Conseil Management Certification d&apos;entreprises
-          </h2>
+            Nos Domaines d'Intervention          </h2>
           <p
-            className={`text-lg text-accent font-medium transition-all duration-700 delay-150 ${
-              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
+            className={`text-lg text-accent font-medium transition-all duration-700 delay-150 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
           >
-            Qualité Sécurité Environnement
           </p>
         </div>
 

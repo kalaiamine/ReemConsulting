@@ -5,11 +5,6 @@ import { Globe, Award, Users, Target } from 'lucide-react'
 export function Expertise() {
   const expertiseAreas = [
     {
-      icon: Award,
-      title: 'Certifications Reconnues',
-      description: 'Certifiés ICA et IRCA par AFNOR, Bureau VERITAS, TÜV et DQS',
-    },
-    {
       icon: Users,
       title: 'Réseau Spécialisé',
       description:
@@ -22,10 +17,15 @@ export function Expertise() {
         'Maîtrise complète des normes et attentes des certificateurs internationaux',
     },
     {
+      icon: Award,
+      title: 'Experts certifiés',
+      description: 'groupe de consultants et auditeurs certifiés ICA/IRCA et partenaires avec des organismes renommés ( AFNOR, TUV, DQS, Bureau VERITA,..)',
+    },
+    {
       icon: Globe,
-      title: 'Couverture Mondiale',
+      title: 'Couverture internationale',
       description:
-        'Intervention France et international : Europe, Balkans, Canada, Moyen Orient, Afrique',
+        'intervention en Tunisie, Nord Afrique, Moyen Orient et Europe',
     },
   ]
 
@@ -74,30 +74,30 @@ export function Expertise() {
           <div className="grid md:grid-cols-4 gap-4 text-center">
             <div className="p-4 bg-card rounded-lg border border-border">
               <div className="text-2xl font-bold text-accent mb-2">R</div>
-              <p className="font-semibold text-foreground mb-2">Ressources & Savoirs</p>
+              <p className="font-semibold text-foreground mb-2">Ressources / Savoirs</p>
               <p className="text-sm text-muted-foreground">
-                Capitalisation de vos expériences passées
+                La capitalisation de vos expériences passées pour ne pas repartir de zéro à chaque projet.
               </p>
             </div>
             <div className="p-4 bg-card rounded-lg border border-border">
               <div className="text-2xl font-bold text-accent mb-2">E</div>
               <p className="font-semibold text-foreground mb-2">Expertise</p>
               <p className="text-sm text-muted-foreground">
-                Connaissance technique pointue
+                La connaissance technique pointue mise au service de nos conseils et audits.
               </p>
             </div>
             <div className="p-4 bg-card rounded-lg border border-border">
               <div className="text-2xl font-bold text-accent mb-2">E</div>
-              <p className="font-semibold text-foreground mb-2">Enseignement</p>
+              <p className="font-semibold text-foreground mb-2">Engineering</p>
               <p className="text-sm text-muted-foreground">
-                Transformation des savoirs en formations
+                La transformation de nos connaissances en solutions applicables et de partage des savoirs à travers les formation et les séminaires.
               </p>
             </div>
             <div className="p-4 bg-card rounded-lg border border-border">
               <div className="text-2xl font-bold text-accent mb-2">M</div>
-              <p className="font-semibold text-foreground mb-2">Management</p>
+              <p className="font-semibold text-foreground mb-2">Management des connaissances</p>
               <p className="text-sm text-muted-foreground">
-                Organisation et partage du savoir
+                organisation, Maitrise, conformité et satisfaction.
               </p>
             </div>
           </div>

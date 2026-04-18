@@ -5,15 +5,16 @@ import React from "react"
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CalendarIcon, Clock, User, Mail, Phone } from 'lucide-react'
+import Link from 'next/link'
 
 export function Booking() {
   const [formData, setFormData] = useState({
-    name: '',
+    company: '',
+    contactName: '',
     email: '',
     phone: '',
-    date: '',
-    time: '',
-    serviceType: 'Conseil',
+    preferredDate: '',
+    serviceType: 'Consulting',
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
@@ -39,78 +40,107 @@ export function Booking() {
 
       if (!response.ok) {
         const data = await response.json()
-        setError(data.error || 'Erreur lors de la réservation')
+        setError(data.error || 'Erreur lors de l’envoi')
         return
       }
 
-      console.log('[v0] Booking created successfully')
       setSubmitted(true)
       setTimeout(() => {
         setSubmitted(false)
-        setFormData({ name: '', email: '', phone: '', date: '', time: '', serviceType: 'Conseil', message: '' })
-      }, 3000)
+        setFormData({ company: '', contactName: '', email: '', phone: '', preferredDate: '', serviceType: 'Consulting', message: '' })
+      }, 5000)
     } catch (err) {
-      console.error('[v0] Booking error:', err)
-      setError('Erreur lors de la réservation')
+      setError('Erreur lors de l’envoi')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <section id="booking" className="py-20 px-6 bg-secondary/30">
-      <div className="max-w-3xl mx-auto">
+    <section id="contact" className="py-20 px-6 bg-secondary/30">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-6">
             Contactez-nous
           </h2>
-          <p className="text-lg text-muted-foreground mb-4">
-            Réservez votre consultation en ligne via notre système de planification automatisé
-          </p>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Pour bénéficier de nos services de conseil et de formation, sélectionnez un créneau qui vous convient. Nous serons heureux de discuter de vos besoins spécifiques en matière de conseil et de formation.
-          </p>
+          <div className="space-y-4 text-lg text-muted-foreground mb-8">
+            <p className="font-medium text-foreground">
+              Obtenir un service de conseil, audit ou formation ?
+            </p>
+            <p>
+              Vous voulez améliorer ou simplifier votre système ?
+            </p>
+            <p className="pt-4">
+              Réservez un rendez-vous en ligne via notre système.
+            </p>
+            <p>
+              Pour bénéficier de nos services, sélectionnez un créneau qui vous convient.
+            </p>
+            <p className="font-semibold text-accent pt-4">
+              Nous reviendrons vers vous sous 48h.
+            </p>
+            <p className="text-base italic">
+              Nous serons heureux de discuter de vos besoins et attentes et vous bénéficierez d’un service satisfaisant.
+            </p>
+          </div>
         </div>
 
         {submitted ? (
-          <div className="bg-accent/10 border border-accent rounded-lg p-8 text-center animate-in fade-in zoom-in duration-500">
-            <div className="w-20 h-20 mx-auto mb-4 bg-accent/20 rounded-full flex items-center justify-center animate-pulse">
-              <span className="text-4xl animate-bounce">✓</span>
+          <div className="bg-accent/10 border border-accent rounded-xl p-12 text-center animate-in fade-in zoom-in duration-500">
+            <div className="w-20 h-20 mx-auto mb-6 bg-accent/20 rounded-full flex items-center justify-center">
+              <span className="text-4xl text-accent">✓</span>
             </div>
-            <h3 className="text-3xl font-semibold text-foreground mb-3 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
-              Rendez-vous confirmé!
+            <h3 className="text-3xl font-semibold text-foreground mb-4">
+              Demande envoyée !
             </h3>
-            <p className="text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
-              Merci pour votre réservation. Nous vous enverrons un e-mail de confirmation avec les détails.
+            <p className="text-muted-foreground text-lg">
+              Merci pour votre message. Nous vous contacterons dans les plus brefs délais (sous 48h maximum).
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="bg-card p-8 rounded-lg border border-border">
+          <form onSubmit={handleSubmit} className="bg-card p-10 rounded-2xl border border-border shadow-lg">
             {error && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+              <div className="mb-8 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg text-center">
                 {error}
               </div>
             )}
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  <User size={16} className="inline mr-2" />
-                  Nom complet
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  Société (nom de la société)
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="company"
+                  value={formData.company}
                   onChange={handleChange}
                   required
-                  placeholder="Votre nom"
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  placeholder="Nom de votre entreprise"
+                  className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  Nom et prénom du contact
+                </label>
+                <input
+                  type="text"
+                  name="contactName"
+                  value={formData.contactName}
+                  onChange={handleChange}
+                  required
+                  placeholder="Votre nom complet"
+                  className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
+                />
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-3">
                   <Mail size={16} className="inline mr-2" />
-                  Email
+                  Email professionnel
                 </label>
                 <input
                   type="email"
@@ -118,15 +148,12 @@ export function Booking() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="vous@exemple.com"
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  placeholder="votre@entreprise.com"
+                  className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
                 />
               </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-foreground mb-3">
                   <Phone size={16} className="inline mr-2" />
                   Téléphone
                 </label>
@@ -137,92 +164,71 @@ export function Booking() {
                   onChange={handleChange}
                   required
                   placeholder="+33 6 XX XX XX XX"
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  <CalendarIcon size={16} className="inline mr-2" />
-                  Date
-                </label>
-                <input
-                  type="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
                 />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  <Clock size={16} className="inline mr-2" />
-                  Heure préférée
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  <CalendarIcon size={16} className="inline mr-2" />
+                  Date préférée
                 </label>
-                <select
-                  name="time"
-                  value={formData.time}
+                <input
+                  type="date"
+                  name="preferredDate"
+                  value={formData.preferredDate}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                >
-                  <option value="">Sélectionnez une heure</option>
-                  <option value="09:00">09:00 - 10:00</option>
-                  <option value="10:00">10:00 - 11:00</option>
-                  <option value="11:00">11:00 - 12:00</option>
-                  <option value="14:00">14:00 - 15:00</option>
-                  <option value="15:00">15:00 - 16:00</option>
-                  <option value="16:00">16:00 - 17:00</option>
-                </select>
+                  className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
+                />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Type de service
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  Type de service préféré
                 </label>
                 <select
                   name="serviceType"
                   value={formData.serviceType}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
                 >
-                  <option value="Conseil">Conseil & Stratégie</option>
+                  <option value="Consulting">Consulting</option>
                   <option value="Audit">Audit</option>
-                  <option value="Certification">Certification</option>
                   <option value="Formation">Formation</option>
+                  <option value="Événement / Conférence">Événement / Conférence</option>
                 </select>
               </div>
             </div>
 
-            <div className="mb-8">
-              <label className="block text-sm font-medium text-foreground mb-2">
-                Message (optionnel)
+            <div className="mb-10">
+              <label className="block text-sm font-medium text-foreground mb-3">
+                Message & Précisions (optionnel)
               </label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Décrivez brièvement votre situation..."
-                rows={4}
-                className="w-full px-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                placeholder="Décrivez brièvement vos besoins et attentes..."
+                rows={5}
+                className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
               />
             </div>
 
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-accent text-white hover:bg-accent/90 py-3 text-base font-medium disabled:opacity-50 transition-all duration-300 hover:shadow-lg active:scale-95"
+              className="w-full bg-accent text-white hover:bg-accent/90 py-4 text-lg font-semibold rounded-xl disabled:opacity-50 transition-all duration-300 hover:shadow-xl active:scale-[0.98]"
             >
               {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  Traitement...
+                <span className="flex items-center justify-center gap-3">
+                  <span className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin" />
+                  Envoi en cours...
                 </span>
               ) : (
-                'Confirmer la réservation'
+                'Réserver un rendez-vous'
               )}
             </Button>
           </form>

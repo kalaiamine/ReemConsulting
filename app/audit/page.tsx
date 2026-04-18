@@ -9,51 +9,51 @@ import { CheckCircle } from 'lucide-react'
 
 const auditBlocks = [
   {
-    title: 'Audit interne',
-    image: '/audit-analysis.jpg',
+    title: 'Audit de Diagnostic',
+    image: '/audit_diagnostic_abs.png',
     imageLeft: true,
     bullets: [
-      "Disposer d'un œil objectif et expert",
-      "Identification des écarts par rapport à la norme établie",
-      "Apport de pistes de progrès",
-      "Tous nos auditeurs certifiés IRCA/ICA",
-      "Disposer d'une plus-value assurée de vos audits internes",
+      "État des lieux initial avant certification.",
+      "Identification précise des écarts par rapport au référentiel visé.",
+      "Élaboration d'une feuille de route claire pour la mise en conformité.",
+      "Analyse des forces et faiblesses de votre système actuel.",
+      "Sensibilisation de vos équipes aux exigences normatives."
     ],
   },
   {
-    title: 'Audit à blanc',
-    image: '/team-collaboration.jpg',
+    title: 'Audit Interne',
+    image: '/audit_interne_abs.png',
     imageLeft: false,
     bullets: [
-      "Objectiver et fiabiliser votre système en amont",
-      "Identification des écarts par rapport à la norme établie",
-      "Apport de pistes de progrès",
-      "Tous nos auditeurs certifiés IRCA/ICA",
-      "Disposer d'une plus-value assurée de vos audits internes",
+      "Vérification de l'efficacité de vos processus.",
+      "Disposer d'un œil objectif et expert sur votre organisation.",
+      "Apport de pistes de progrès et d'amélioration continue.",
+      "Tous nos auditeurs sont certifiés (IRCA/ICA).",
+      "Préparation optimale aux audits de certification."
     ],
   },
   {
-    title: 'Audit de certification',
-    image: '/strategy-consultation.jpg',
+    title: 'Audit Fournisseur',
+    image: '/audit_fournisseur_abs.png',
     imageLeft: true,
     bullets: [
-      "De nombreux secteurs d'activités qualifiés",
-      "Auditeurs certifiés IRCA/ICA",
-      "Expérience de nos auditeurs",
-      "Capacité d'adaptation au contexte",
-      "Planning sur mesure",
+      "Maîtrise de la qualité sur toute votre chaîne de valeur.",
+      "Analyser les performances de vos fournisseurs et sous-traitants.",
+      "Vérification du respect de vos cahiers des charges et spécifications.",
+      "Audit opérationnel sur le terrain (locaux fournisseurs).",
+      "Remise d'un rapport détaillé et suivi des plans d'actions."
     ],
   },
   {
-    title: 'Audit de vos sous-traitants & fournisseurs',
-    image: '/training-expertise.jpg',
+    title: 'Veille Réglementaire',
+    image: '/veille_reglementaire_abs.png',
     imageLeft: false,
     bullets: [
-      "Analyser les performances du fournisseur / sous-traitant",
-      "Analyse des spécifications et normes applicables",
-      "Analyse du contenu des dernières commandes passées",
-      "Audit opérationnel terrain",
-      "Remise d'un rapport d'audit et d'un plan d'actions",
+      "Assurance de conformité légale constante.",
+      "Identification des textes réglementaires applicables à votre activité.",
+      "Évaluation de votre niveau de conformité (audit réglementaire).",
+      "Mise à jour régulière de votre registre réglementaire.",
+      "Anticipation des évolutions légales et de leurs impacts."
     ],
   },
 ]

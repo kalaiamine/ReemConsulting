@@ -51,65 +51,35 @@ export function Header() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <button
-            onClick={() => scrollToSection('about')}
-            className="text-sm text-muted-foreground hover:text-foreground transition"
-          >
-            À propos
-          </button>
-          <div className="relative" ref={servicesRef}>
-            <button
-              onClick={() => setIsServicesOpen((v) => !v)}
-              onMouseEnter={() => setIsServicesOpen(true)}
-              className={`flex items-center gap-1 text-sm transition ${
-                isServicesOpen ? 'text-primary font-medium' : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Services
-              <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {isServicesOpen && (
-              <div
-                className="absolute left-0 top-full pt-2"
-                onMouseLeave={() => setIsServicesOpen(false)}
-              >
-                <div className="bg-card border-2 border-accent rounded-md shadow-lg py-2 px-1 flex flex-row gap-0">
-                  {servicesDropdownItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="px-4 py-2 text-sm text-foreground hover:bg-accent/10 hover:text-accent border-b-2 border-transparent hover:border-accent rounded transition whitespace-nowrap"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-          <button
-            onClick={() => scrollToSection('expertise')}
-            className="text-sm text-muted-foreground hover:text-foreground transition"
-          >
-            Expertise
-          </button>
           <Link
-            href="/iso"
+            href="/"
             className="text-sm text-muted-foreground hover:text-foreground transition"
           >
-            Certifications ISO
+            Accueil
           </Link>
-          <button
-            onClick={() => scrollToSection('testimonials')}
+          <Link
+            href="/notre-societe"
             className="text-sm text-muted-foreground hover:text-foreground transition"
           >
-            Témoignages
-          </button>
+            Notre Société
+          </Link>
+          <Link
+            href="/services"
+            className="text-sm text-muted-foreground hover:text-foreground transition"
+          >
+            Services
+          </Link>
+          <Link
+            href="/contact"
+            className="text-sm text-muted-foreground hover:text-foreground transition"
+          >
+            Contact
+          </Link>
           <Button
-            onClick={() => scrollToSection('booking')}
+            asChild
             className="bg-accent text-white hover:bg-accent/90"
           >
-            Réserver
+            <Link href="/contact">Contactez-nous</Link>
           </Button>
         </div>
 
@@ -126,55 +96,39 @@ export function Header() {
       {isMenuOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="flex flex-col gap-4 px-6 py-4">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
-            >
-              À propos
-            </button>
-            <div className="flex flex-col gap-1">
-              <button
-                onClick={() => scrollToSection('services')}
-                className="text-left text-sm text-muted-foreground hover:text-foreground transition"
-              >
-                Services
-              </button>
-              <div className="pl-4 flex flex-col gap-1 border-l-2 border-accent/30 ml-2">
-                <Link href="/iso" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-accent transition">
-                  Conseil
-                </Link>
-                <Link href="/audit" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-accent transition">
-                  Audit
-                </Link>
-                <Link href="/iso" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-accent transition">
-                  Formation
-                </Link>
-              </div>
-            </div>
-            <button
-              onClick={() => scrollToSection('expertise')}
-              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
-            >
-              Expertise
-            </button>
             <Link
-              href="/iso"
-              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
+              href="/"
               onClick={() => setIsMenuOpen(false)}
-            >
-              Certifications ISO
-            </Link>
-            <button
-              onClick={() => scrollToSection('testimonials')}
               className="text-left text-sm text-muted-foreground hover:text-foreground transition"
             >
-              Témoignages
-            </button>
+              Accueil
+            </Link>
+            <Link
+              href="/notre-societe"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
+            >
+              Notre Société
+            </Link>
+            <Link
+              href="/services"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
+            >
+              Services
+            </Link>
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
+            >
+              Contact
+            </Link>
             <Button
-              onClick={() => scrollToSection('booking')}
+              asChild
               className="w-full bg-accent text-white hover:bg-accent/90"
             >
-              Réserver
+              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contactez-nous</Link>
             </Button>
           </div>
         </div>

@@ -4,28 +4,35 @@ import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function HeroEnhanced() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const slides = [
     {
-      title: 'Transformation Stratégique',
-      subtitle: 'Conseil et accompagnement pour l\'excellence managériale',
-      image: '/strategy-consultation.jpg',
-      cta: 'Découvrir'
+      title: 'Améliorez vos performances',
+      subtitle: 'Consulting et Audits — Maîtrise des normes ISO et préparation aux audits',
+      image: '/audit-reem.png',
+      cta: 'Contactez-nous'
     },
     {
-      title: 'Audit et Certification',
-      subtitle: 'Maîtrise des normes ISO et certifications internationales',
-      image: '/audit-analysis.jpg',
-      cta: 'En savoir plus'
+      title: 'Préparez vos audits ISO',
+      subtitle: 'Consulting et Audits — Maîtrise des normes ISO et préparation aux audits',
+      image: '/hero_audit_abs.png',
+      cta: 'Contactez-nous'
     },
     {
-      title: 'Formation Expertise',
-      subtitle: 'Transfert de savoir-faire et développement des compétences',
-      image: '/training-expertise.jpg',
-      cta: 'Nous contacter'
+      title: 'Optimisez vos processus',
+      subtitle: 'Consulting et Audits — Maîtrise des normes ISO et préparation aux audits',
+      image: '/hero_process_abs.png',
+      cta: 'Contactez-nous'
+    },
+    {
+      title: 'Accompagnement personnalisé',
+      subtitle: 'Consulting et Audits — Maîtrise des normes ISO et préparation aux audits',
+      image: '/iso-reem.png',
+      cta: 'Contactez-nous'
     }
   ]
 
@@ -34,7 +41,7 @@ export function HeroEnhanced() {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 6000)
     return () => clearInterval(timer)
-  }, [])
+  }, [slides.length])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -64,7 +71,7 @@ export function HeroEnhanced() {
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
-        <div className="max-w-3xl text-center">
+        <div className="max-w-4xl text-center">
           <div className="mb-6 inline-block">
             <span className="text-accent font-semibold text-sm uppercase tracking-wider">
               REEM Consulting
@@ -75,22 +82,22 @@ export function HeroEnhanced() {
             {slides[currentSlide].title}
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
             {slides[currentSlide].subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              onClick={() => scrollToSection('services')}
-              className="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-3 rounded-lg"
+              asChild
+              className="bg-accent hover:bg-accent/90 text-white font-semibold px-8 py-6 text-lg rounded-lg shadow-xl transition-all hover:scale-105 active:scale-95"
             >
-              {slides[currentSlide].cta}
+              <Link href="/services">Nos Services</Link>
             </Button>
             <Button
-              onClick={() => scrollToSection('booking')}
-              className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-3 rounded-lg shadow-lg"
+              asChild
+              className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-lg shadow-xl transition-all hover:scale-105 active:scale-95 border-2 border-white"
             >
-              Réserver une consultation
+              <Link href="/contact">Contactez-nous</Link>
             </Button>
           </div>
         </div>

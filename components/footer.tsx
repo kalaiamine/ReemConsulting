@@ -2,6 +2,7 @@
 
 import { Mail, Phone, MapPin } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function Footer() {
   return (
@@ -27,21 +28,19 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/#about" className="text-primary-foreground/80 hover:text-primary-foreground transition">À propos</a></li>
-              <li><a href="/#services" className="text-primary-foreground/80 hover:text-primary-foreground transition">Services</a></li>
-              <li><a href="/iso" className="text-primary-foreground/80 hover:text-primary-foreground transition">Certifications</a></li>
-              <li><a href="/#testimonials" className="text-primary-foreground/80 hover:text-primary-foreground transition">Témoignages</a></li>
-              <li><a href="/#booking" className="text-primary-foreground/80 hover:text-primary-foreground transition">Réservation</a></li>
+              <li><Link href="/" className="text-primary-foreground/80 hover:text-primary-foreground transition">Accueil</Link></li>
+              <li><Link href="/notre-societe" className="text-primary-foreground/80 hover:text-primary-foreground transition">Notre Société</Link></li>
+              <li><Link href="/services" className="text-primary-foreground/80 hover:text-primary-foreground transition">Services</Link></li>
+              <li><Link href="/contact" className="text-primary-foreground/80 hover:text-primary-foreground transition">Contact</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Ressources</h4>
+            <h4 className="font-semibold mb-4">Légal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition">Blog</a></li>
-              <li><a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition">Cas d'étude</a></li>
-              <li><a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition">FAQ</a></li>
-              <li><a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition">Contact</a></li>
+              <li><Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition">Mentions légales</Link></li>
+              <li><Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition">Politique de confidentialité</Link></li>
+              <li><Link href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition">Cookies</Link></li>
             </ul>
           </div>
 
@@ -50,11 +49,11 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Phone size={16} />
-                <span className="text-primary-foreground/80">+33 1 XX XX XX XX</span>
+                <span className="text-primary-foreground/80">+33 (0) 1 XX XX XX XX</span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail size={16} className="mt-0.5" />
-                <span className="text-primary-foreground/80">contact@consultpro.fr</span>
+                <span className="text-primary-foreground/80">contact@reemconsulting.fr</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5" />

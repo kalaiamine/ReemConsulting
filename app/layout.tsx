@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'ConsultPro - Consulting & Appointment Booking',
-  description: 'Professional consulting services with online appointment booking. Expert guidance for your business needs.',
+  title: 'REEM Consulting - Maîtrise des normes ISO et préparation aux audits',
+  description: 'Expertise en conseil, audit et formation QHSE. Accompagnement personnalisé pour l’excellence opérationnelle et la conformité normative.',
   generator: 'v0.app',
   icons: {
     icon: [
