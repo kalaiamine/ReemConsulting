@@ -58,6 +58,32 @@
   .animate-scroll {
     animation: scroll 40s linear infinite;
   }
+  .animate-scroll-reverse {
+    animation: scroll-reverse 40s linear infinite;
+  }
+  .animate-fade-in-down {
+    animation: fadeInDown 1s ease-out both;
+  }
+}
+
+@keyframes scroll-reverse {
+  from {
+    transform: translateX(calc(-50%));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 :root {
@@ -179,4 +205,84 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* International Phone Input Overrides */
+.phone-input-container .react-international-phone-input-container {
+  display: flex !important;
+  width: 100% !important;
+  align-items: stretch !important;
+  position: relative !important;
+}
+
+.react-international-phone-country-selector-button {
+  height: 100% !important;
+  min-height: 48px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0.75rem !important;
+  border-bottom-left-radius: 0.75rem !important;
+  border: 1px solid var(--border) !important;
+  border-right: 0 !important;
+  background-color: var(--background) !important;
+  padding: 0 12px !important;
+  transition: all 0.2s ease !important;
+}
+
+.react-international-phone-country-selector-button:hover {
+  background-color: var(--secondary) !important;
+}
+
+.react-international-phone-input {
+  flex: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 48px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: 0.75rem !important;
+  border-bottom-right-radius: 0.75rem !important;
+  border: 1px solid var(--border) !important;
+  border-left: 0 !important;
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.react-international-phone-input:focus {
+  outline: none !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent), transparent 80%) !important;
+}
+
+/* Ensure the selector button also highlights on input focus if possible, 
+   but since they are separate elements, we'll at least make the input focus look good. */
+
+.react-international-phone-country-selector-dropdown {
+  background-color: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  padding: 4px !important;
+  z-index: 100 !important;
+  margin-top: 8px !important;
+}
+
+.react-international-phone-country-selector-dropdown__list-item {
+  color: var(--foreground) !important;
+  padding: 8px 12px !important;
+  border-radius: 0.5rem !important;
+  margin: 2px 0 !important;
+}
+
+.react-international-phone-country-selector-dropdown__list-item:hover {
+  background-color: var(--accent) !important;
+  color: white !important;
+}
+
+.react-international-phone-country-selector-dropdown__list-item--selected {
+  background-color: var(--accent) !important;
+  color: white !important;
 }

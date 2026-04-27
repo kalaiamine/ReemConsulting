@@ -72,8 +72,8 @@ export function HeroEnhanced() {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
         <div className="max-w-4xl text-center">
-          <div className="mb-6 inline-block">
-            <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+          <div className="mb-8 inline-block animate-fade-in-down">
+            <span className="text-accent font-bold text-3xl md:text-5xl uppercase tracking-[0.2em] drop-shadow-[0_5px_15px_rgba(0,169,157,0.4)]">
               REEM Consulting
             </span>
           </div>

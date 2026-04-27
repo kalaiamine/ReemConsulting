@@ -5,10 +5,10 @@ import Link from 'next/link'
 import { useRef, useEffect, useState } from 'react'
 
 const services = [
-  { title: 'Consulting', image: '/consulting-reem.png', href: '/iso' },
+  { title: 'Consulting', image: '/consultingimage.jpg', href: '/iso' },
   { title: 'Audit', image: '/audit-reem.png', href: '/audit' },
-  { title: 'Formation', image: '/formation-reem.png', href: '/iso' },
-  { title: 'Événement / Conférence', image: '/iso-reem.png', href: '/contact' },
+  { title: 'Formation', image: '/formation.jpg', href: '/iso' },
+  { title: 'Événement / Conférence', image: '/conference.png', href: '/contact' },
 ]
 
 export function ServicesShowcase() {

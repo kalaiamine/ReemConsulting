@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CalendarIcon, Clock, User, Mail, Phone } from 'lucide-react'
 import Link from 'next/link'
+import { PhoneInputField } from './ui/phone-input'
 
 export function Booking() {
   const [formData, setFormData] = useState({
@@ -153,18 +154,14 @@ export function Booking() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-3">
-                  <Phone size={16} className="inline mr-2" />
+                <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-3">
+                  <Phone size={16} />
                   Téléphone
                 </label>
-                <input
-                  type="tel"
-                  name="phone"
+                <PhoneInputField
                   value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  placeholder="+33 6 XX XX XX XX"
-                  className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent transition-all shadow-sm"
+                  onChange={(phone) => setFormData(prev => ({ ...prev, phone }))}
+                  className="w-full"
                 />
               </div>
             </div>

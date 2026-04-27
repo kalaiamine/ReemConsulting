@@ -3,6 +3,9 @@ import { HeroEnhanced } from '@/components/hero-enhanced'
 
 import { Footer } from '@/components/footer'
 import { VisitorTracker } from '@/components/visitor-tracker'
+import { ServicesShowcase } from '@/components/services-showcase'
+import { Expertise } from '@/components/expertise'
+import { PartnersCarousel } from '@/components/partners-carousel'
 
 export default function Home() {
   return (
@@ -10,6 +13,10 @@ export default function Home() {
       <VisitorTracker />
       <Header />
       <HeroEnhanced />
+      
+      <ServicesShowcase />
+      <Expertise />
+      <PartnersCarousel />
 
       <Footer />
     </main>

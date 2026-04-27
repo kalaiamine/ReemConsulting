@@ -23,7 +23,7 @@ const conseilServices = [
     title: 'La mise en place de système de management pour toutes les normes',
     description:
       "Nous sommes en mesure de vous accompagner dans la mise en place et la réalisation rapide d'un système de management personnalisé à votre entreprise, en accord avec les normes requises et en fonction de vos activités et processus. Votre (vos) système(s) de gestion sera (seront) facilement certifié(s) du premier coup par un organisme de certification recommandé.",
-    image: '/consulting-reem.png',
+    image: '/consultingimage.jpg',
     imageLeft: false,
   },
   {
@@ -31,7 +31,7 @@ const conseilServices = [
     title: 'Améliorer, mettre à jour et simplifier votre système de management',
     description:
       "Le système de Management que vous utilisez est lourd et peu performant. Nous avons la capacité de le simplifier et de le rendre extrêmement facile, pratique et efficace pour vos activités.",
-    image: '/formation-reem.png',
+    image: '/formation.jpg',
     imageLeft: true,
   },
 ]
