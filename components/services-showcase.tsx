@@ -8,7 +8,7 @@ const services = [
   { title: 'Consulting', image: '/consultingimage.jpg', href: '/iso' },
   { title: 'Audit', image: '/audit-reem.png', href: '/audit' },
   { title: 'Formation', image: '/formation.jpg', href: '/iso' },
-  { title: 'Événement / Conférence', image: '/conference.png', href: '/contact' },
+  { title: 'Événement / Conférence', image: '/event.jpg', href: '/contact' },
 ]
 
 export function ServicesShowcase() {
