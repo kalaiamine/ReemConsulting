@@ -9,7 +9,8 @@ import Image from 'next/image'
 const servicesDropdownItems = [
   { label: 'Conseil', href: '/iso' },
   { label: 'Audit', href: '/audit' },
-  { label: 'Formation', href: '/iso' },
+  { label: 'Formation', href: '/iso#formation' },
+  { label: 'Certifications', href: '/nos-certifications' },
 ]
 
 export function Header() {
@@ -70,6 +71,12 @@ export function Header() {
             Services
           </Link>
           <Link
+            href="/nos-certifications"
+            className="text-sm text-muted-foreground hover:text-foreground transition"
+          >
+            Certifications
+          </Link>
+          <Link
             href="/contact"
             className="text-sm text-muted-foreground hover:text-foreground transition"
           >
@@ -116,6 +123,13 @@ export function Header() {
               className="text-left text-sm text-muted-foreground hover:text-foreground transition"
             >
               Services
+            </Link>
+            <Link
+              href="/nos-certifications"
+              onClick={() => setIsMenuOpen(false)}
+              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
+            >
+              Certifications
             </Link>
             <Link
               href="/contact"

@@ -47,7 +47,7 @@ export function CertificationsSection() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/iso">
+          <Link href="/nos-certifications">
             <Button variant="outline" className="gap-2">
               <Award className="w-4 h-4" />
               Voir toutes les certifications

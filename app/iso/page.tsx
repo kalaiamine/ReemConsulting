@@ -2,10 +2,11 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
-import { Award, ArrowRight, Search, Settings, TrendingUp } from 'lucide-react'
+import { Award, ArrowRight, Search, Settings, TrendingUp, ArrowLeft } from 'lucide-react'
 import { certificationsList } from '@/lib/certifications'
 import { isoDetailsContent } from '@/lib/iso-details'
 
@@ -37,9 +38,21 @@ const conseilServices = [
 ]
 
 export default function CertificationsPage() {
+  const router = useRouter()
   return (
     <main className="min-h-screen bg-background">
       <Header />
+
+      <div className="pt-24 px-6 max-w-7xl mx-auto">
+        <Button
+          variant="ghost"
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Retour
+        </Button>
+      </div>
 
       {/* Hero Banner */}
       <section className="pt-32 pb-16 px-6 bg-sky-50 dark:bg-primary/5">
@@ -92,12 +105,6 @@ export default function CertificationsPage() {
                     {service.description}
                   </p>
                   <div className="mt-8">
-                    <Link href="/contact">
-                      <Button className="bg-accent hover:bg-accent/90 text-white gap-2">
-                        En savoir plus
-                        <ArrowRight className="w-4 h-4" />
-                      </Button>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -106,73 +113,58 @@ export default function CertificationsPage() {
         </div>
       </section>
 
-      {/* Certifications Grid */}
-      <section className="py-20 px-6 bg-sky-50 dark:bg-primary/5">
+      {/* Formation Section */}
+      <section id="formation" className="py-20 px-6 bg-background border-t border-border">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
-              Certifications
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">
+              Nos Domaines de Formation
             </h2>
-            <p className="text-lg text-accent font-medium max-w-3xl mx-auto">
-              Mise en place de Systèmes de Management QHSE et Certifications associées
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Nous intervenons spécifiquement sur ces normes pour vos besoins en formation
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {certificationsList.map((item) => {
-              const hasDetail = !!isoDetailsContent[item.id]
-              const cardClass = "flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent/50 hover:shadow-md transition-all duration-300"
-              const content = (
-                <>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-foreground mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {item.description}
-                    </p>
-                    {hasDetail && (
-                      <span className="inline-flex items-center gap-1 text-sm font-medium text-accent mt-2">
-                        Découvrir
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border-2 border-border bg-muted">
-                    <Image
-                      src={item.image}
-                      alt=""
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </>
-              )
-              return hasDetail ? (
-                <Link
-                  key={item.id}
-                  href={`/iso/${item.id}`}
-                  className={cardClass}
-                >
-                  {content}
-                </Link>
-              ) : (
-                <div key={item.id} className={cardClass}>
-                  {content}
-                </div>
-              )
-            })}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            {[
+              { id: 'iso-9001', title: 'ISO 9001' },
+              { id: 'iso-45001', title: 'ISO 45001' },
+              { id: 'iso-14001-certiphyto', title: 'ISO 14001' },
+              { id: 'iso-50001', title: 'ISO 50001' },
+              { id: 'iso-17025', title: 'ISO 17025' },
+              { id: 'iso-22000-ifs-haccp', title: 'ISO 22000' },
+              { id: 'iso-17020', title: 'ISO 17020' },
+            ].map((item) => (
+              <Link
+                key={item.id}
+                href={`/iso/${item.id}`}
+                className="bg-card p-4 rounded-xl border border-border text-center hover:border-accent hover:shadow-md transition-all group"
+              >
+                <span className="font-semibold text-foreground group-hover:text-accent transition-colors">
+                  {item.title}
+                </span>
+              </Link>
+            ))}
           </div>
 
           <div className="mt-12 text-center">
-            <Link href="/contact">
-              <Button className="gap-2 bg-accent hover:bg-accent/90 text-white">
+            <Link href="/nos-certifications">
+              <Button variant="outline" className="gap-2">
                 <Award className="w-4 h-4" />
-                Réserver une consultation
+                Voir toutes nos certifications
               </Button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 bg-sky-50 dark:bg-primary/5">
+        <div className="max-w-7xl mx-auto text-center">
+          <Link href="/contact">
+            <Button className="gap-2 bg-accent hover:bg-accent/90 text-white px-8 py-6 text-lg">
+              Contactez-nous
+            </Button>
+          </Link>
         </div>
       </section>
 

@@ -136,7 +136,7 @@ export function Hero() {
             onClick={scrollToBooking}
             className="bg-accent text-white hover:bg-accent/90 px-8 py-6 text-base flex items-center gap-2 mx-auto"
           >
-            Réserver une consultation
+            Contactez-nous
             <ArrowRight size={20} />
           </Button>
         </div>

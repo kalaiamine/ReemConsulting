@@ -50,7 +50,7 @@ export function IsoSection() {
               </Link>
               <Link href="/#booking" className="mt-4">
                 <Button variant="secondary" className="w-full font-medium">
-                  Réserver une consultation
+                  Contactez-nous
                 </Button>
               </Link>
             </div>
@@ -61,7 +61,7 @@ export function IsoSection() {
           <p className="text-muted-foreground text-sm mb-4">
             Audit, formation et accompagnement vers la certification
           </p>
-          <Link href="/iso">
+          <Link href="/nos-certifications">
             <Button variant="outline" className="gap-2">
               <Award className="w-4 h-4" />
               Voir toutes les certifications

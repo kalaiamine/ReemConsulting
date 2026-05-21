@@ -49,7 +49,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Phone size={16} />
-                <span className="text-primary-foreground/80">+33 (0) 1 XX XX XX XX</span>
+                <span className="text-primary-foreground/80">+216 26 861 817</span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail size={16} className="mt-0.5" />
@@ -57,7 +57,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5" />
-                <span className="text-primary-foreground/80">Paris, France</span>
+                <span className="text-primary-foreground/80">162, AV.UMA, Omrane Centre La Soukra- Tunisie</span>
               </li>
             </ul>
           </div>

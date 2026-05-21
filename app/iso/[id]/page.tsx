@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
@@ -10,6 +10,7 @@ import { isoDetailsContent } from '@/lib/iso-details'
 
 export default function ISODetailPage() {
   const params = useParams()
+  const router = useRouter()
   const id = params.id as string
 
   const iso = isoDetailsContent[id]
@@ -24,11 +25,9 @@ export default function ISODetailPage() {
             <p className="text-muted-foreground mb-8">
               La norme que vous recherchez n&apos;existe pas dans notre base de données.
             </p>
-            <Button asChild className="gap-2">
-              <Link href="/iso">
-                <ArrowLeft className="w-4 h-4" />
-                Retour aux certifications
-              </Link>
+            <Button onClick={() => router.back()} variant="outline" className="gap-2">
+              <ArrowLeft className="w-4 h-4" />
+              Retour
             </Button>
           </div>
         </div>
@@ -45,13 +44,14 @@ export default function ISODetailPage() {
 
       <div className="py-6 px-6 border-b border-border bg-secondary/20">
         <div className="max-w-4xl mx-auto">
-          <Link
-            href="/iso"
+          <Button
+            variant="ghost"
+            onClick={() => router.back()}
             className="inline-flex items-center gap-2 text-primary hover:text-accent transition font-semibold py-2 px-3 rounded-lg hover:bg-accent/10"
           >
             <ArrowLeft className="w-5 h-5" />
-            Retour aux certifications
-          </Link>
+            Retour
+          </Button>
         </div>
       </div>
 
@@ -184,7 +184,7 @@ export default function ISODetailPage() {
               Nos experts sont disponibles pour discuter de votre projet de certification.
             </p>
             <Button asChild>
-              <Link href="/#booking">Réserver une consultation</Link>
+              <Link href="/#booking">Contactez-nous</Link>
             </Button>
           </div>
         </div>
