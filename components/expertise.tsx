@@ -83,7 +83,7 @@ export function Expertise() {
               <div className="text-2xl font-bold text-accent mb-2">E</div>
               <p className="font-semibold text-foreground mb-2">Expertise</p>
               <p className="text-sm text-muted-foreground">
-                La connaissance technique pointue mise au service de nos conseils et audits.
+                Nos connaissances techniques pointues au cœur de nos services de conseil et audits.
               </p>
             </div>
             <div className="p-4 bg-card rounded-lg border border-border">

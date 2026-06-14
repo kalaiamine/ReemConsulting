@@ -49,7 +49,7 @@ export default function LoginPage() {
         <CardHeader>
           <div className="flex justify-center mb-2">
             <Image
-              src="/logo-reem-final.jpg"
+              src="/Logo transparent.png"
               alt="REEM Consulting"
               width={64}
               height={64}

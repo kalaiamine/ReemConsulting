@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { addBooking, getBookings } from '@/lib/db'
 import { getAuthUser } from '@/lib/auth'
+import { sendBookingConfirmation } from '@/lib/mail'
 
 import nodemailer from 'nodemailer'
 
@@ -35,19 +36,19 @@ export async function POST(request: NextRequest) {
 
     // Setup Nodemailer transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+      host: process.env.SMTP_HOST || 'mail.reemconsulting.tn',
+      port: Number(process.env.SMTP_PORT) || 465,
+      secure: Number(process.env.SMTP_PORT) === 465 || process.env.SMTP_SECURE === 'true',
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.SMTP_USER || 'contact@reemconsulting.tn',
+        pass: process.env.SMTP_PASSWORD || process.env.SMTP_PASS || 'Yassine1224',
       },
     })
 
-    // Email content
+    // Email content for Admin Notification
     const mailOptions = {
-      from: process.env.SMTP_USER || '"REEM Consulting" <no-reply@reemconsulting.com>',
-      to: process.env.ADMIN_EMAIL, // Must be defined in .env
+      from: `"REEM Consulting" <${process.env.SMTP_USER || 'contact@reemconsulting.tn'}>`,
+      to: process.env.ADMIN_EMAIL || 'contact@reemconsulting.tn',
       subject: `Nouvelle demande de réservation - ${serviceType}`,
       text: `Une nouvelle demande a été soumise sur le site REEM Consulting.\n\n` +
             `Détails du contact :\n` +
@@ -77,13 +78,26 @@ export async function POST(request: NextRequest) {
              <p>${message || '<em>Aucun message supplémentaire</em>'}</p>`
     }
 
-    // Send the email
+    // Send the admin notification email
     try {
       await transporter.sendMail(mailOptions)
       console.log('[v0] Email notification sent to admin')
     } catch (emailError) {
-      console.error('[v0] Email sending failed:', emailError)
-      // We don't fail the booking if email fails, but we could
+      console.error('[v0] Admin Email notification sending failed:', emailError)
+    }
+
+    // Send the automatic confirmation email to the client
+    try {
+      await sendBookingConfirmation(email, contactName, {
+        company,
+        serviceType,
+        preferredDate,
+        phone,
+        message,
+      })
+      console.log(`[v0] Automatic confirmation email sent to client: ${email}`)
+    } catch (clientEmailError) {
+      console.error('[v0] Client confirmation email sending failed:', clientEmailError)
     }
 
     return NextResponse.json(booking, { status: 201 })

@@ -341,4 +341,33 @@ export const isoDetailsContent: Record<string, ISODetail> = {
     scope: "Applicable à toutes les organisations de la chaîne alimentaire, du producteur au distributeur.",
     industry: ['Agroalimentaire', 'Restauration', 'Distribution', 'Production', 'Agriculture'],
   },
+  'iso-37001': {
+    title: 'Norme ISO 37001',
+    version: 'V 2016',
+    subtitle: 'Accompagnement certification anti-corruption',
+    objectifs: [
+      "Prévenir, détecter et lutter contre la corruption de manière proactive",
+      "Instaurer une culture d'intégrité, de transparence et de conformité",
+      "Évaluer les risques de corruption spécifiques à vos activités",
+      "Mettre en place des mesures de contrôle adaptées et proportionnées",
+    ],
+    methodologie: [
+      "Cartographie des risques de corruption et évaluation de l'exposition",
+      "Définition de la politique anti-corruption et engagement de la direction",
+      "Mise en place d'une fonction de conformité anti-corruption indépendante",
+      "Sensibilisation et formation obligatoire de l'ensemble des collaborateurs",
+      "Évaluation approfondie des partenaires commerciaux (due diligence)",
+      "Mise en place d'un canal d'alerte professionnelle sécurisé et confidentiel",
+      "Audit interne du système anti-corruption et traitement des alertes",
+      "Présentation à l'audit externe pour certification",
+    ],
+    interet: [
+      "Protection pénale, juridique et financière des dirigeants et de l'entreprise",
+      "Valorisation forte de l'éthique commerciale auprès des clients, investisseurs et partenaires",
+      "Sécurisation complète des transactions commerciales et des relations d'affaires",
+      "Réduction majeure du risque de fraude interne et d'incidents d'intégrité",
+    ],
+    scope: "Applicable à tous types d'organisations (publiques, privées, à but non lucratif) et de toutes tailles.",
+    industry: ['Industrie', 'Énergie', 'Finance', 'Marchés Publics', 'Commerce International', 'Tous secteurs'],
+  },
 }

@@ -66,23 +66,26 @@ export function HeroEnhanced() {
             priority={index === 0}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/75 to-primary/60" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
         <div className="max-w-4xl text-center">
-          <div className="mb-8 inline-block animate-fade-in-down">
-            <span className="text-accent font-bold text-3xl md:text-5xl uppercase tracking-[0.2em] drop-shadow-[0_5px_15px_rgba(0,169,157,0.4)]">
+          <div className="mb-8 flex flex-col items-center animate-fade-in-down">
+            <span className="text-accent font-extrabold text-3xl md:text-5xl uppercase tracking-[0.2em] drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] drop-shadow-[0_5px_15px_rgba(0,169,157,0.45)] mb-4">
               REEM Consulting
+            </span>
+            <span className="text-white/90 text-xl md:text-2xl font-medium tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-center max-w-3xl">
+              Excellence en conseil, formation et audits de vos systèmes de management
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
             {slides[currentSlide].title}
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/95 mb-12 leading-relaxed max-w-2xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
             {slides[currentSlide].subtitle}
           </p>
 

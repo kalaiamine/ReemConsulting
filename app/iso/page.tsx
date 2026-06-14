@@ -1,167 +1,212 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
-import { Award, ArrowRight, Search, Settings, TrendingUp, ArrowLeft } from 'lucide-react'
-import { certificationsList } from '@/lib/certifications'
-import { isoDetailsContent } from '@/lib/iso-details'
+import { CheckCircle } from 'lucide-react'
 
-const conseilServices = [
+const isoFormations = [
   {
-    icon: Search,
-    title: 'Le diagnostic',
-    description:
-      "Pour évaluer l'état actuel des pratiques de gestion de votre entreprise, le diagnostic est utilisé afin de repérer les forces et faiblesses et de mettre en place un plan d'action pour améliorer de manière efficace les pratiques de votre système de management.",
-    image: '/audit-reem.png',
-    imageLeft: true,
+    title: 'ISO 9001',
+    badge: 'Qualite',
+    color: 'from-blue-500/10 to-blue-500/5',
+    border: 'border-blue-500/20 hover:border-blue-500/50',
+    dot: 'bg-blue-500',
+    description: "Systeme de Management de la Qualite - Ameliorer la satisfaction client, optimiser les processus et structurer la performance de votre organisation.",
+    points: [
+      'Satisfaction et fidelisation des clients',
+      'Amelioration continue des processus',
+      'Maitrise des risques et opportunites',
+      'Applicable a tous les secteurs',
+    ],
   },
   {
-    icon: Settings,
-    title: 'La mise en place de système de management pour toutes les normes',
-    description:
-      "Nous sommes en mesure de vous accompagner dans la mise en place et la réalisation rapide d'un système de management personnalisé à votre entreprise, en accord avec les normes requises et en fonction de vos activités et processus. Votre (vos) système(s) de gestion sera (seront) facilement certifié(s) du premier coup par un organisme de certification recommandé.",
-    image: '/consultingimage.jpg',
-    imageLeft: false,
+    title: 'ISO 45001',
+    badge: 'Securite & Sante',
+    color: 'from-orange-500/10 to-orange-500/5',
+    border: 'border-orange-500/20 hover:border-orange-500/50',
+    dot: 'bg-orange-500',
+    description: "Systeme de Management de la Sante et Securite au Travail - Prevenir les accidents, proteger vos collaborateurs et reduire les risques professionnels.",
+    points: [
+      'Reduction des accidents et maladies professionnelles',
+      'Conformite legale en matiere de SST',
+      'Implication et bien-etre des equipes',
+      'Culture de prevention durable',
+    ],
   },
   {
-    icon: TrendingUp,
-    title: 'Améliorer, mettre à jour et simplifier votre système de management',
-    description:
-      "Le système de Management que vous utilisez est lourd et peu performant. Nous avons la capacité de le simplifier et de le rendre extrêmement facile, pratique et efficace pour vos activités.",
-    image: '/formation.jpg',
-    imageLeft: true,
+    title: 'ISO 14001',
+    badge: 'Environnement',
+    color: 'from-green-500/10 to-green-500/5',
+    border: 'border-green-500/20 hover:border-green-500/50',
+    dot: 'bg-green-500',
+    description: "Systeme de Management Environnemental - Maitriser vos impacts environnementaux, assurer votre conformite reglementaire et engager votre organisation dans une demarche eco-responsable.",
+    points: [
+      'Identification et reduction des impacts environnementaux',
+      'Conformite reglementaire garantie',
+      "Amelioration de l'image et de la reputation",
+      'Reduction des couts lies aux dechets et energies',
+    ],
+  },
+  {
+    title: 'ISO 50001',
+    badge: 'Energie',
+    color: 'from-yellow-500/10 to-yellow-500/5',
+    border: 'border-yellow-500/20 hover:border-yellow-500/50',
+    dot: 'bg-yellow-500',
+    description: "Systeme de Management de l'Energie - Optimiser votre consommation energetique, reduire votre empreinte carbone et maitriser vos couts d'exploitation.",
+    points: [
+      'Reduction des consommations et factures energetiques',
+      "Diminution des emissions de gaz a effet de serre",
+      'Performance operationnelle amelioree',
+      'Eligibilite aux certifications et aides energetiques',
+    ],
+  },
+  {
+    title: 'ISO 26000',
+    badge: 'Responsabilite Societale',
+    color: 'from-purple-500/10 to-purple-500/5',
+    border: 'border-purple-500/20 hover:border-purple-500/50',
+    dot: 'bg-purple-500',
+    description: "Responsabilite Societale des Organisations - Integrer les enjeux sociaux, ethiques et environnementaux dans votre strategie pour un developpement durable et responsable.",
+    points: [
+      'Valorisation de votre demarche RSE',
+      'Dialogue renforce avec les parties prenantes',
+      'Contribution au developpement durable',
+      "Renforcement de la confiance et de l'attractivite",
+    ],
+  },
+  {
+    title: 'ISO 17025',
+    badge: 'Laboratoire',
+    color: 'from-cyan-500/10 to-cyan-500/5',
+    border: 'border-cyan-500/20 hover:border-cyan-500/50',
+    dot: 'bg-cyan-500',
+    description: "Competence des Laboratoires d'Essais et d'Etalonnage - Garantir la fiabilite, la precision et la validite de vos resultats d'analyses et d'essais.",
+    points: [
+      'Reconnaissance internationale de vos resultats',
+      'Maitrise de la qualite des essais et etalonnages',
+      "Conformite aux exigences d'accreditation",
+      'Amelioration de la competence technique',
+    ],
+  },
+  {
+    title: 'ISO 22000',
+    badge: 'Agroalimentaire',
+    color: 'from-lime-500/10 to-lime-500/5',
+    border: 'border-lime-500/20 hover:border-lime-500/50',
+    dot: 'bg-lime-600',
+    description: "Systeme de Management de la Securite des Aliments - Assurer la securite de la chaine alimentaire, maitriser les dangers biologiques, chimiques et physiques tout au long du processus.",
+    points: [
+      'Securite alimentaire de bout en bout',
+      'Conformite HACCP et reglementaire',
+      'Confiance des consommateurs et acheteurs',
+      'Tracabilite et maitrise des risques alimentaires',
+    ],
+  },
+  {
+    title: 'ISO 37001',
+    badge: 'Anti-corruption',
+    color: 'from-rose-500/10 to-rose-500/5',
+    border: 'border-rose-500/20 hover:border-rose-500/50',
+    dot: 'bg-rose-500',
+    description: "Systeme de Management Anti-Corruption - Prevenir, detecter et combattre la corruption au sein de votre organisation pour securiser vos relations d'affaires.",
+    points: [
+      'Protection juridique et financiere des dirigeants',
+      "Renforcement de l'ethique et de l'integrite",
+      'Securisation des transactions commerciales',
+      'Valorisation aupres des partenaires et investisseurs',
+    ],
+  },
+  {
+    title: 'ISO 17020',
+    badge: 'Inspection',
+    color: 'from-indigo-500/10 to-indigo-500/5',
+    border: 'border-indigo-500/20 hover:border-indigo-500/50',
+    dot: 'bg-indigo-500',
+    description: "Exigences pour le Fonctionnement de differents Types d'Organismes Procedant a l'Inspection - Attester la competence, l'impartialite et la coherence de vos activites d'inspection.",
+    points: [
+      'Accreditation et reconnaissance nationale/internationale',
+      'Impartialite et independance garanties',
+      'Competence technique validee',
+      "Confiance accrue des clients et donneurs d'ordre",
+    ],
   },
 ]
 
-export default function CertificationsPage() {
-  const router = useRouter()
+export default function FormationPage() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
 
-      <div className="pt-24 px-6 max-w-7xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => router.back()}
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Retour
-        </Button>
-      </div>
-
-      {/* Hero Banner */}
-      <section className="pt-32 pb-16 px-6 bg-sky-50 dark:bg-primary/5">
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-6 bg-gradient-to-b from-secondary/60 to-background">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            Nos Services
-          </p>
-          <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-6">
-            Nos Services de Conseil
+          <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-4 px-4 py-1.5 bg-accent/10 rounded-full">
+            Formation
+          </span>
+          <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-6 leading-tight">
+            Nos Domaines de Formation ISO
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            Nous proposons des services de conseil personnalisés, adaptés aux différents stades de maturité
-            de l&apos;entreprise, sous forme de coaching, de formation et/ou de support technique.
+            REEM Consulting vous accompagne dans la maitrise des normes internationales grace a des formations expertes, pragmatiques et adaptees a votre secteur d&apos;activite.
           </p>
+          <div className="w-20 h-1 bg-accent mx-auto mt-8 rounded-full" />
         </div>
       </section>
 
-      {/* Conseil Service Blocks */}
-      <section className="py-20 px-6 bg-background">
-        <div className="max-w-6xl mx-auto space-y-24">
-          {conseilServices.map((service, index) => {
-            const Icon = service.icon
-            return (
-              <div
-                key={index}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  !service.imageLeft ? 'md:[&>*:first-child]:order-2' : ''
-                }`}
-              >
-                {/* Image */}
-                <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden border border-border shadow-xl">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
-                </div>
-
-                {/* Content */}
-                <div>
-                  <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-accent" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-5 leading-snug">
-                    {service.title}
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-                    {service.description}
-                  </p>
-                  <div className="mt-8">
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </section>
-
-      {/* Formation Section */}
-      <section id="formation" className="py-20 px-6 bg-background border-t border-border">
+      {/* ISO Cards Grid */}
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">
-              Nos Domaines de Formation
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Nous intervenons spécifiquement sur ces normes pour vos besoins en formation
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            {[
-              { id: 'iso-9001', title: 'ISO 9001' },
-              { id: 'iso-45001', title: 'ISO 45001' },
-              { id: 'iso-14001-certiphyto', title: 'ISO 14001' },
-              { id: 'iso-50001', title: 'ISO 50001' },
-              { id: 'iso-17025', title: 'ISO 17025' },
-              { id: 'iso-22000-ifs-haccp', title: 'ISO 22000' },
-              { id: 'iso-17020', title: 'ISO 17020' },
-            ].map((item) => (
-              <Link
-                key={item.id}
-                href={`/iso/${item.id}`}
-                className="bg-card p-4 rounded-xl border border-border text-center hover:border-accent hover:shadow-md transition-all group"
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {isoFormations.map((iso) => (
+              <div
+                key={iso.title}
+                className={`bg-gradient-to-br ${iso.color} rounded-2xl border ${iso.border} p-7 flex flex-col gap-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group`}
               >
-                <span className="font-semibold text-foreground group-hover:text-accent transition-colors">
-                  {item.title}
-                </span>
-              </Link>
+                {/* Header */}
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h2 className="text-2xl font-bold text-primary font-serif">{iso.title}</h2>
+                    <span className={`inline-block mt-1 text-xs font-semibold text-white px-3 py-0.5 rounded-full ${iso.dot}`}>
+                      {iso.badge}
+                    </span>
+                  </div>
+                  <div className={`w-3 h-3 rounded-full mt-1.5 flex-shrink-0 ${iso.dot} opacity-80 group-hover:scale-125 transition-transform`} />
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  {iso.description}
+                </p>
+
+                {/* Points */}
+                <ul className="space-y-2">
+                  {iso.points.map((point, i) => (
+                    <li key={i} className="flex gap-2.5 items-start">
+                      <CheckCircle className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                      <span className="text-xs text-foreground/80 leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
-
-          <div className="mt-12 text-center">
-            <Link href="/nos-certifications">
-              <Button variant="outline" className="gap-2">
-                <Award className="w-4 h-4" />
-                Voir toutes nos certifications
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-sky-50 dark:bg-primary/5">
-        <div className="max-w-7xl mx-auto text-center">
+      {/* CTA */}
+      <section className="py-16 px-6 bg-gradient-to-b from-transparent to-secondary/30">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-4">
+            Pret a vous former ?
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            Nos experts sont disponibles pour vous proposer un programme de formation sur mesure, adapte a vos besoins.
+          </p>
           <Link href="/contact">
-            <Button className="gap-2 bg-accent hover:bg-accent/90 text-white px-8 py-6 text-lg">
+            <Button className="bg-accent hover:bg-accent/90 text-white px-8 py-6 text-lg shadow-lg shadow-accent/20">
               Contactez-nous
             </Button>
           </Link>

@@ -20,5 +20,6 @@ export const certificationsList = [
   { id: 'fsc-pefc', title: 'FSC & PEFC', description: 'Gestion des forêts', image: '/placeholder.jpg' },
   { id: 'iso-19443', title: 'ISO 19443', description: 'Nucléaire', image: '/strategy-consultation.jpg' },
   { id: 'iso-17020', title: 'ISO 17020', description: 'Inspection', image: '/training-expertise.jpg' },
+  { id: 'iso-37001', title: 'ISO 37001', description: 'Anti-corruption', image: '/strategy-consultation.jpg' },
   { id: 'mase-cefri', title: 'MASE / CEFRI', description: 'Sécurité sur site Client', image: '/team-collaboration.jpg' },
 ]

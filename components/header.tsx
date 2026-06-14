@@ -37,17 +37,17 @@ export function Header() {
   }, [])
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="fixed w-full top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-md">
+      <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
           <Image
-            src="/logo-reem-final.jpg"
+            src="/Logo transparent.png"
             alt="REEM Consulting Logo"
-            width={40}
-            height={40}
-            className="w-10 h-10 object-contain"
+            width={56}
+            height={56}
+            className="w-14 h-14 object-contain drop-shadow-md"
           />
-          <span className="text-lg font-semibold text-foreground hidden sm:inline">REEM Consulting</span>
+          <span className="text-xl font-bold text-foreground hidden sm:inline drop-shadow-sm">REEM Consulting</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -69,18 +69,6 @@ export function Header() {
             className="text-sm text-muted-foreground hover:text-foreground transition"
           >
             Services
-          </Link>
-          <Link
-            href="/nos-certifications"
-            className="text-sm text-muted-foreground hover:text-foreground transition"
-          >
-            Certifications
-          </Link>
-          <Link
-            href="/contact"
-            className="text-sm text-muted-foreground hover:text-foreground transition"
-          >
-            Contact
           </Link>
           <Button
             asChild
@@ -123,20 +111,6 @@ export function Header() {
               className="text-left text-sm text-muted-foreground hover:text-foreground transition"
             >
               Services
-            </Link>
-            <Link
-              href="/nos-certifications"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
-            >
-              Certifications
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-left text-sm text-muted-foreground hover:text-foreground transition"
-            >
-              Contact
             </Link>
             <Button
               asChild
